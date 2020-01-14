@@ -32,3 +32,5 @@ python manage.py runserver
 # -----Библиотеки-----
 # Для работы с изображениями models.ImageField()
 pip install --user Pillow
+# Автоматически сгенерирует все необходимые зависимости для проекта в файл requirements.txt
+pip freeze > requirements.txt
