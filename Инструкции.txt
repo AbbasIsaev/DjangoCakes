@@ -1,0 +1,34 @@
+# Установка
+pip install Django
+python -m django --version
+
+# Все команды Django
+django-admin
+
+# Создаем проект c именем server
+django-admin startproject server
+
+# Создаем приложение с именем cake
+python manage.py startapp cake
+
+# Создаем миграции
+python manage.py makemigrations
+
+# Создаем миграции приложения cake
+python manage.py makemigrations cake
+
+# Просмотр миграции в виде sql
+python manage.py sqlmigrate cake 0001
+
+# Применяем миграции
+python manage.py migrate
+
+# Создание первого пользовтеля
+python manage.py createsuperuser
+
+# Запуск проекта
+python manage.py runserver
+
+# -----Библиотеки-----
+# Для работы с изображениями models.ImageField()
+pip install --user Pillow

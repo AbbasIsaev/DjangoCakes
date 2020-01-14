@@ -1,0 +1,5 @@
+Django==3.0.2
+# Для работы с изображениями models.ImageField()
+Pillow==7.0.0
+# Postgres DB
+psycopg2==2.8.4
