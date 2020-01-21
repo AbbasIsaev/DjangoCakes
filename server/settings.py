@@ -83,10 +83,6 @@ DATABASES = {
     }
 }
 
-if not DEBUG:
-    db_from_env = dj_database_url.config(conn_max_age=600)
-    DATABASES['default'] = db_from_env
-
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
 
@@ -128,5 +124,26 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Папка с файлами
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+# Класс хранения файлов SFTP
+# DEFAULT_FILE_STORAGE = 'storages.backends.sftpstorage.SFTPStorage'
+DEFAULT_FILE_STORAGE = 'server.storage.SFTPFileSystemStorage'
+
+if DEBUG:
+    from .dev import *
+else:
+    db_from_env = dj_database_url.config(conn_max_age=600)
+    DATABASES['default'] = db_from_env
+
+    # Подключение к удаленному SFTP серверу
+    SFTP_STORAGE_HOST = os.environ.get('SFTP_STORAGE_HOST')
+    SFTP_STORAGE_ROOT = os.environ.get('SFTP_STORAGE_ROOT', '/media/photos')
+    SFTP_STORAGE_PARAMS = {
+        'username': os.environ.get('SFTP_USER_NAME'),
+        'password': os.environ.get('SFTP_USER_PASSWORD'),
+        'allow_agent': False,
+        'look_for_keys': False,
+    }
+    SFTP_STORAGE_INTERACTIVE = False

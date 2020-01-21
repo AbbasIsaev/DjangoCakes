@@ -14,14 +14,14 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card mb-4 shadow-sm">
-                            <a href="{{ item.photos.first }}" class="text-center">
+                            <a href="{{ item.photos.first }}" target=_blank class="text-center">
                                 <img src="{{ item.photos.first }}" alt="{{ item.photos.first }}"
                                      class="img" height="225">
                             </a>
                             <div class="container row mb-1">
                                 {% for ph in item.photos.all %}
                                     <div class="col-md-1">
-                                        <a href="{{ ph }}" class="text-center">
+                                        <a href="{{ ph }}" target=_blank class="text-center">
                                             <img src="{{ ph }}" alt="{{ ph }}" height="50" class="img">
                                         </a>
                                     </div>

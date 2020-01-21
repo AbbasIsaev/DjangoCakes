@@ -15,14 +15,16 @@
                     {% for item in Cakes %}
                         <div class="col-md-4">
                             <div class="card mb-4 shadow-sm">
-                                <a href="{{ item.photos.first }}" class="text-center">
-                                    <img src="{{ item.photos.first }}" alt="{{ item.photos.first }}"
-                                         class="img" height="225">
-                                </a>
+                                {% if item.photos.first is not None %}
+                                    <a href="{{ item.photos.first }}" target=_blank class="text-center">
+                                        <img src="{{ item.photos.first }}" alt="{{ item.photos.first }}"
+                                             class="img" height="225">
+                                    </a>
+                                {% endif %}
                                 <div class="container row mb-3">
                                     {% for ph in item.photos.all %}
                                         <div class="col-md-3">
-                                            <a href="{{ ph }}">
+                                            <a href="{{ ph }}" target=_blank>
                                                 <img src="{{ ph }}" alt="{{ ph }}" height="50" class="img">
                                             </a>
                                         </div>
