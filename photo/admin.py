@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.utils.safestring import mark_safe
 
+from server.utils.handler import ExceptionHandler
 from .models import Photo
 
 
@@ -17,7 +18,8 @@ class PhotoAdmin(admin.ModelAdmin):
             height = obj.url.height
             url = obj.url.url
         except Exception as err:
-            return mark_safe('%s <strong>Ошибка: %s</strong>' % (obj.url.name, err.__str__()))
+            err_h = ExceptionHandler(err)
+            return mark_safe('%s <strong>Ошибка: %s</strong>' % (obj.url.name, err_h))
 
         html = wrapper_photo(80, 80, width, height, url)
         return mark_safe(html)

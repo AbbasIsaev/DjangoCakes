@@ -2,9 +2,13 @@ import uuid
 
 from django.db import models
 
-from server.storage import SFTPFileSystemStorage
+from server.settings import STORAGE
+from server.storage import SFTPFileSystemStorage, WebDavFileSystemStorage
 
-SFS = SFTPFileSystemStorage()
+if STORAGE == 'SFTP':
+    SFS = SFTPFileSystemStorage()
+elif STORAGE == 'WEBDAV':
+    SFS = WebDavFileSystemStorage()
 
 
 class Photo(models.Model):

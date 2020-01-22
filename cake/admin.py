@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.utils.safestring import mark_safe
 
 from photo.admin import wrapper_photo
+from server.utils.handler import ExceptionHandler
 from .models import Cake
 
 
@@ -20,7 +21,8 @@ class CakeAdmin(admin.ModelAdmin):
                 height = obj.url.height
                 url = obj.url.url
             except Exception as err:
-                html += '<p>%s <strong>Ошибка: %s</strong></p>' % (obj.url.name, err.__str__())
+                err_h = ExceptionHandler(err)
+                html += '<p>%s <strong>Ошибка: %s</strong></p>' % (obj.url.name, err_h)
                 continue
 
             html += wrapper_photo(80, 80, width, height, url)

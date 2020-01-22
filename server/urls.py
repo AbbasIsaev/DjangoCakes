@@ -18,15 +18,18 @@ from django.urls import path, include
 from django.views.generic.base import RedirectView
 
 from photo import views as photo_views
+from server.settings import STORAGE
 
 favicon_view = RedirectView.as_view(url='/static/favicon.ico', permanent=True)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('cake.urls')),
-    path('media/<str:url>', photo_views.media),
     path('favicon.ico', favicon_view)
 ]
+
+if STORAGE == 'SFTP':
+    urlpatterns.append(path('media/<str:url>', photo_views.media))
 
 # from django.conf import settings
 # from django.conf.urls.static import static

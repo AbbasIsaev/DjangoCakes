@@ -127,9 +127,16 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
-# Класс хранения файлов SFTP
-# DEFAULT_FILE_STORAGE = 'storages.backends.sftpstorage.SFTPStorage'
-DEFAULT_FILE_STORAGE = 'server.storage.SFTPFileSystemStorage'
+STORAGE = os.environ.get('STORAGE', 'WEBDAV')
+# Папка куда будут складываться файлы
+STORAGE_DIR = os.environ.get('STORAGE_DIR', 'dev_photos')
+
+if STORAGE == 'SFTP':
+    # Класс хранения файлов
+    DEFAULT_FILE_STORAGE = 'server.storage.SFTPFileSystemStorage'
+elif STORAGE == 'WEBDAV':
+    # Класс хранения файлов
+    DEFAULT_FILE_STORAGE = 'server.storage.WebDavFileSystemStorage'
 
 if DEBUG:
     from .dev import *
@@ -137,13 +144,18 @@ else:
     db_from_env = dj_database_url.config(conn_max_age=600)
     DATABASES['default'] = db_from_env
 
-    # Подключение к удаленному SFTP серверу
-    SFTP_STORAGE_HOST = os.environ.get('SFTP_STORAGE_HOST')
-    SFTP_STORAGE_ROOT = os.environ.get('SFTP_STORAGE_ROOT', '/media/photos')
-    SFTP_STORAGE_PARAMS = {
-        'username': os.environ.get('SFTP_USER_NAME'),
-        'password': os.environ.get('SFTP_USER_PASSWORD'),
-        'allow_agent': False,
-        'look_for_keys': False,
-    }
-    SFTP_STORAGE_INTERACTIVE = False
+    if STORAGE == 'SFTP':
+        # Подключение к удаленному SFTP серверу
+        SFTP_STORAGE_HOST = os.environ.get('SFTP_STORAGE_HOST')
+        SFTP_STORAGE_ROOT = os.environ.get('SFTP_STORAGE_ROOT', '/media/' + STORAGE_DIR)
+        SFTP_STORAGE_PARAMS = {
+            'username': os.environ.get('SFTP_USER_NAME'),
+            'password': os.environ.get('SFTP_USER_PASSWORD'),
+            'allow_agent': False,
+            'look_for_keys': False,
+        }
+        SFTP_STORAGE_INTERACTIVE = False
+    elif STORAGE == 'WEBDAV':
+        # Подключение к удаленному Webdav серверу
+        WEBDAV_URL = os.environ.get('WEBDAV_URL')
+        WEBDAV_PUBLIC_URL = os.environ.get('WEBDAV_PUBLIC_URL')
