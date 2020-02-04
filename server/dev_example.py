@@ -14,4 +14,4 @@ if STORAGE == 'SFTP':
 elif STORAGE == 'WEBDAV':
     # Подключение к удаленному Webdav серверу
     WEBDAV_URL = 'https://username:password@webdav.yandex.ru'
-    WEBDAV_PUBLIC_URL = "https://webdav.yandex.ru/"
+    WEBDAV_PUBLIC_URL = "/media/"

@@ -158,4 +158,4 @@ else:
     elif STORAGE == 'WEBDAV':
         # Подключение к удаленному Webdav серверу
         WEBDAV_URL = os.environ.get('WEBDAV_URL')
-        WEBDAV_PUBLIC_URL = os.environ.get('WEBDAV_PUBLIC_URL')
+        WEBDAV_PUBLIC_URL = "/media/"

@@ -29,7 +29,9 @@ urlpatterns = [
 ]
 
 if STORAGE == 'SFTP':
-    urlpatterns.append(path('media/<str:url>', photo_views.media))
+    urlpatterns.append(path('media/<str:url>', photo_views.media_sftp))
+elif STORAGE == 'WEBDAV':
+    urlpatterns.append(path('media/<str:url>', photo_views.media_webdav))
 
 # from django.conf import settings
 # from django.conf.urls.static import static
