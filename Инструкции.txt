@@ -27,7 +27,7 @@ python manage.py migrate
 python manage.py createsuperuser
 
 # Запуск проекта
-python manage.py runserver
+python manage.py runserver 8000
 
 # -----Библиотеки-----
 # Для работы с изображениями models.ImageField()

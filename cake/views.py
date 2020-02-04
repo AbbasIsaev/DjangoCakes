@@ -1,4 +1,7 @@
+import json
+
 from django.shortcuts import render
+from django.template.defaulttags import register
 from django.views.generic import ListView, DetailView
 
 from const.models import Const
@@ -33,3 +36,21 @@ class CakeDetailView(DetailView):
         const = Const.get_json_all(Const)
         ctx['CONSTANTS'] = const
         return ctx
+
+
+@register.filter(name='filter__const_by_key')
+def filter__const_by_key(dictionary, key):
+    return dictionary.get(key)
+
+
+@register.filter(name='filter__str')
+def filter__str(dictionary, key):
+    value = dictionary.get(key)
+    return json.dumps(value, indent=4)
+
+
+@register.filter(name='filter__is_active')
+def filter__is_active(number):
+    if number == 0:
+        return 'active'
+    return ''

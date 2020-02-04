@@ -1,8 +1,151 @@
+/* ------------------------------cake------------------------------ */
+.cake-h-200 {
+    height: 200px;
+}
+
+.cake-h-200:hover {
+    box-shadow: 0 14px 30px -15px #6f42c1;
+    transition: all 0.3s;
+}
+
+.cake-h-450 {
+    height: 450px;
+}
+
+.cake-h-450:hover {
+    box-shadow: 0 14px 30px -15px #6f42c1;
+    transition: all 0.3s;
+}
+
+.cake-img {
+    max-height: 100%;
+}
+
+.cake-img-h60 {
+    display: flex;
+    height: 60px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.cake-img-h60:hover {
+    box-shadow: 0 15px 30px -15px #6f42c1;
+    transition: all 0.3s;
+}
+
+/* ------------------------------carousel-control------------------------------ */
+.carousel-control-prev, .carousel-control-next {
+    max-width: 40px;
+}
+
+.carousel-control-prev:hover, .carousel-control-next:hover, .carousel-indicators:hover {
+    background-color: #95999c;
+    opacity: 0.8;
+}
+
+/* ------------------------------footer------------------------------ */
 footer {
     padding-top: 1rem;
     padding-bottom: 1rem;
 }
 
-img {
-    max-width: 100%
+/* ------------------------------scroll------------------------------ */
+.scroll-to-top {
+    position: fixed;
+    bottom: 60px;
+    right: 50px;
+    border-radius: 5px;
+    display: none;
+    color: #6f42c1;
+    transition: all .5s;
+    background-color: #f8f9fa;
+    border: 0;
+    opacity: .5;
+}
+
+.scroll-to-top:hover {
+    background-color: #fff;
+    border: 1px solid;
+    opacity: 1;
+}
+
+/* ------------------------------header------------------------------ */
+header .navbar-brand::after {
+    content: '';
+    display: block;
+    width: 100%;
+    background-color: #fff;
+    height: 1px;
+    transform: scale(0);
+    transition: 0.3s;
+}
+
+header .navbar-brand:hover::after {
+    transform: scale(1);
+}
+
+/* ------------------------------screen------------------------------ */
+@media only screen and (max-width: 2000px) {
+    .cake-img-h60 {
+        height: 90px;
+    }
+}
+
+@media only screen and (max-width: 991px) {
+    .cake-h-450 {
+        height: 360px;
+    }
+
+    .cake-img-h60 {
+        height: 90px;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .cake-h-450 {
+        height: 260px;
+    }
+}
+
+@media only screen and (max-width: 575px) {
+    header .py-4 {
+        padding-left: 31px;
+        padding-bottom: 0 !important;
+        font-size: 12px;
+    }
+
+    header h4 {
+        font-size: 15px;
+    }
+
+    header .navbar-brand {
+        font-size: 15px;
+    }
+}
+
+@media only screen and (max-width: 520px) {
+    .cake-h-450 {
+        height: 200px;
+    }
+
+    .cake-img-h60 {
+        height: 60px;
+    }
+}
+
+@media only screen and (max-width: 410px) {
+    .cake-h-450 {
+        height: 170px;
+    }
+}
+
+@media only screen and (max-width: 370px) {
+    .cake-h-450 {
+        height: 130px;
+    }
+
+    .cake-img-h60 {
+        height: 40px;
+    }
 }

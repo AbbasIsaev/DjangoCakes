@@ -2,7 +2,6 @@ import json
 import uuid
 
 from django.db import models
-from django.template.defaulttags import register
 
 DEFAULT_PARAMS = '{\n' \
                  '    "key1": "value1",\n' \
@@ -40,14 +39,3 @@ class Const(models.Model):
             js_data.update(item)
         # json_formatted_str2 = json.dumps(data, indent=2)
         return js_data
-
-
-@register.filter(name='filter__const_by_key')
-def filter__const_by_key(dictionary, key):
-    return dictionary.get(key)
-
-
-@register.filter(name='filter__str')
-def filter__str(dictionary, key):
-    value = dictionary.get(key)
-    return json.dumps(value, indent=4)

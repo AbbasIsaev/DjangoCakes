@@ -1,18 +1,14 @@
 <footer class="text-muted">
     <div class="container">
-        <p class="float-right">
-            <a href="#">Наверх</a>
-        </p>
-        <p>{{ CONSTANTS.footer.copywriter }}</p>
-    </div>
-
-    <div class="badge-danger">
-        {% for required in CONSTANTS.REQUIRED.keys %}
-            {% if CONSTANTS|filter__const_by_key:required is None %}
-                <pre>
-{{ required }}:
-{{ CONSTANTS.REQUIRED|filter__str:required }}</pre>
-            {% endif %}
-        {% endfor %}
+        <span>{{ CONSTANTS.footer.copywriter }}</span>
     </div>
 </footer>
+<div class="badge-danger">
+    {% for required in CONSTANTS.REQUIRED.keys %}
+        {% if CONSTANTS|filter__const_by_key:required is None %}
+            <pre>
+{{ required }}:
+{{ CONSTANTS.REQUIRED|filter__str:required }}</pre>
+        {% endif %}
+    {% endfor %}
+</div>
