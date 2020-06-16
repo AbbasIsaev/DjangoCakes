@@ -20,8 +20,8 @@ REQUIRED = {
 
 class Const(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    name = models.CharField(max_length=128)
-    params = models.TextField(default=DEFAULT_PARAMS)
+    name = models.CharField(max_length=128, verbose_name='Название блока')
+    params = models.TextField(default=DEFAULT_PARAMS, verbose_name='JSON параметры')
 
     def as_dict(self):
         try:
@@ -39,3 +39,7 @@ class Const(models.Model):
             js_data.update(item)
         # json_formatted_str2 = json.dumps(data, indent=2)
         return js_data
+
+    class Meta:
+        verbose_name = 'Параметр'
+        verbose_name_plural = 'Константы (Consts)'

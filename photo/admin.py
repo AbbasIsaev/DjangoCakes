@@ -24,6 +24,8 @@ class PhotoAdmin(admin.ModelAdmin):
         html = wrapper_photo(80, 80, width, height, url)
         return mark_safe(html)
 
+    sample_photo.short_description = "Фото"
+
 
 admin.site.register(Photo, PhotoAdmin)
 

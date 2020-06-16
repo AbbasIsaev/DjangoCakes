@@ -1,10 +1,10 @@
 $(function () {
 
-    $(window).on('load', function () {
+    /*$(window).on('load', function () {
         $('.loader').delay(500).fadeOut('slow', function () {
             $(this).attr('style', 'display: none !important');
         });
-    });
+    });*/
 
     $('.cake-img-h60').mouseenter(function (e) {
         $(this).find("img").click();

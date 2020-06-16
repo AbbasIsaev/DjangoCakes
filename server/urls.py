@@ -25,7 +25,10 @@ favicon_view = RedirectView.as_view(url='/static/favicon.ico', permanent=True)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('cake.urls')),
-    path('favicon.ico', favicon_view)
+    path('favicon.ico', favicon_view),
+
+    # Визуальный редактор, взято из https://pypi.org/project/django-ckeditor/#installation
+    path('ckeditor/', include('ckeditor_uploader.urls')),
 ]
 
 if STORAGE == 'SFTP':

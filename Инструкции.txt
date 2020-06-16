@@ -37,3 +37,14 @@ pip freeze > requirements.txt
 
 # Сборка статических файлов в папку STATIC_ROOT
 python manage.py collectstatic
+
+# Визуальный редактор https://pypi.org/project/django-ckeditor/#installation
+# Установите
+pip install django-ckeditor
+# Добавьте в настройки INSTALLED_APPS
+ckeditor
+# Добавьте для использования виджета с загрузкой файлов в настройки INSTALLED_APPS
+ckeditor_uploader
+# Запустите команду управления collectstatic
+# Это скопирует статические CKEditor необходимые медиаресурсы в каталог, заданный параметром STATIC_ROOT
+python manage.py collectstatic

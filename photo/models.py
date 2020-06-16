@@ -12,12 +12,16 @@ elif STORAGE == 'WEBDAV':
 
 
 class Photo(models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, verbose_name='ID')
     # TODO не создается директория upload_to='photos', вместо этого меняется имя файла на 'photos\имя_файла'
-    url = models.ImageField(upload_to='', storage=SFS)
+    url = models.ImageField(upload_to='', storage=SFS, verbose_name='Фото')
 
     def __str__(self):
         return self.url.url
+
+    class Meta:
+        verbose_name = 'Фото'
+        verbose_name_plural = 'Фотографии (Photos)'
 
 
 # TODO Уменьшить размер картинки

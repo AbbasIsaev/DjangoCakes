@@ -14,6 +14,9 @@ import os
 
 import dj_database_url
 
+# Подключение настроек skeditor
+from .utils.apps.skeditorConfig import *
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -37,10 +40,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'cake',
-    'photo',
-    'const'
+    'cake.apps.CakeConfig',
+    'photo.apps.PhotoConfig',
+    'const.apps.ConstConfig'
 ]
+
+INSTALLED_APPS += CKEDITOR_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
