@@ -37,14 +37,24 @@
         </div>
     </div>
     <div class="navbar navbar-dark bg-dark shadow-sm">
-        <div class="container d-flex justify-content-between">
-            <a href="{% url 'index' %}" class="navbar-brand align-items-left">
-                <strong>{{ CONSTANTS.header.title }}</strong>
-            </a>
-            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarHeader"
-                    aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-sm">
+                    <a href="{% url 'index' %}" class="navbar-brand">
+                        <strong>{{ CONSTANTS.header.title }}</strong>
+                    </a>
+                </div>
+
+                <div class="col-sm d-flex flex-row justify-content-between">
+                    {% include 'cake/includes/search.html' %}
+
+                    <button class="navbar-toggler collapsed ml-3" type="button" data-toggle="collapse"
+                            data-target="#navbarHeader"
+                            aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
 </header>

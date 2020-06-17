@@ -1,0 +1,5 @@
+<form action="{% url 'search' %}" method="get" class="d-flex flex-row" id="search">
+    <input type="text" placeholder="Что найти?" name="search" value="{{ search_value }}"
+           class="form-control mr-2 btn-sm" required>
+    <button type="submit" class="btn btn-outline-light btn-sm">Найти</button>
+</form>

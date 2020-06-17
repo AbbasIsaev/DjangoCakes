@@ -34,6 +34,10 @@
     transition: all 0.3s;
 }
 
+.navbar .container {
+    display: block;
+}
+
 /* ------------------------------carousel-control------------------------------ */
 .carousel-control-prev, .carousel-control-next {
     max-width: 40px;
@@ -68,6 +72,11 @@ footer {
     background-color: #fff;
     border: 1px solid;
     opacity: 1;
+}
+
+.navbar-toggler-icon {
+    width: 1em;
+    height: 1em;
 }
 
 /* ------------------------------header------------------------------ */

@@ -13,6 +13,7 @@ Including anot her URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf import settings
 from django.contrib import admin
 from django.urls import path, include
 from django.views.generic.base import RedirectView
@@ -27,7 +28,6 @@ urlpatterns = [
     path('', include('cake.urls')),
     path('favicon.ico', favicon_view),
 
-    # Визуальный редактор, взято из https://pypi.org/project/django-ckeditor/#installation
     path('ckeditor/', include('ckeditor_uploader.urls')),
 ]
 
@@ -36,7 +36,10 @@ if STORAGE == 'SFTP':
 elif STORAGE == 'WEBDAV':
     urlpatterns.append(path('media/<str:url>', photo_views.media_webdav))
 
-# from django.conf import settings
-# from django.conf.urls.static import static
-# if settings.DEBUG:
-#     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+if settings.DEBUG:
+    # from django.conf.urls.static import static
+    # urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+    import debug_toolbar
+
+    urlpatterns += [path('__debug__/', include(debug_toolbar.urls))]

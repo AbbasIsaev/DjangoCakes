@@ -1,7 +1,8 @@
+# Визуальный редактор, взято из https://pypi.org/project/django-ckeditor/#installation
+
 CKEDITOR_APPS = [
-    # Визуальный редактор
     'ckeditor',
-    # Визуальный редактор. Добаление файлов
+    # Возможность загрузки файлов
     'ckeditor_uploader'
 ]
 

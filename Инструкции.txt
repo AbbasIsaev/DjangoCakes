@@ -34,6 +34,8 @@ python manage.py runserver 8000
 pip install --user Pillow
 # Автоматически сгенерирует все необходимые зависимости для проекта в файл requirements.txt
 pip freeze > requirements.txt
+# Установка зависимостей из файла
+pip install -r requirements.txt
 
 # Сборка статических файлов в папку STATIC_ROOT
 python manage.py collectstatic
@@ -48,3 +50,6 @@ ckeditor_uploader
 # Запустите команду управления collectstatic
 # Это скопирует статические CKEditor необходимые медиаресурсы в каталог, заданный параметром STATIC_ROOT
 python manage.py collectstatic
+
+# Панель отладки Django https://django-debug-toolbar.readthedocs.io/en/latest/installation.html
+pip install django-debug-toolbar

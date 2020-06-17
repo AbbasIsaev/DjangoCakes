@@ -14,7 +14,7 @@ import os
 
 import dj_database_url
 
-# Подключение настроек skeditor
+from .utils.apps.debugToolbarConfig import *
 from .utils.apps.skeditorConfig import *
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -46,6 +46,7 @@ INSTALLED_APPS = [
 ]
 
 INSTALLED_APPS += CKEDITOR_APPS
+INSTALLED_APPS += DEBUG_TOOLBAR_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -55,8 +56,10 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware'
 ]
+
+MIDDLEWARE += DEBUG_TOOLBAR_MIDDLEWARE
 
 ROOT_URLCONF = 'server.urls'
 
