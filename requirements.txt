@@ -19,4 +19,4 @@ requests==2.22.0
 # Визуальный редактор текста
 django-ckeditor==5.9.0
 # Панель отладки Django
-django-debug-toolbar==2.2
+django-debug-toolbar==2.2.1
