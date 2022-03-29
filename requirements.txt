@@ -12,7 +12,7 @@ gunicorn==20.0.4
 whitenoise==5.0.1
 # SFTP storages
 django-storages==1.8
-paramiko==2.7.1
+paramiko==2.10.1
 # Webdav storages
 django-webdav-storage==1.0.0
 requests==2.22.0
